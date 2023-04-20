@@ -12,13 +12,18 @@ class FormController extends Controller
     }
 
     public function formCreate(Request $request) {
+        
+        $img = $request->file('img')->store('public/article');
         $title = $request->input('title');
         $article = $request->input('article');
         $author = $request->input('author');
+        $subtitle = $request->input('subtitle');
 
         $article = Article::create([
             'title' => $title,
             'article' => $article,
+            'subtitle' => $subtitle,
+            'img' => $img,
             'author' => $author,
         ]);
 

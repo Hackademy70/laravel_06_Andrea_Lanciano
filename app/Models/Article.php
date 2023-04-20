@@ -13,6 +13,8 @@ class Article extends Model
     [
         'title',
         'article',
+        'subtitle',
+        'img',
         'author',
     ];
 }
