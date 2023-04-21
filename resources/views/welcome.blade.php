@@ -21,6 +21,13 @@
                         <p class="lead">{{ $article->author }}</p>
                         <a href="{{ route('singlecard.show', ['article' => $article]) }}" class="btn btn-primary">Read More</a>
                         <a href="{{ route('article.edit', ['article' => $article]) }}" class="btn btn-warning">Edit</a>
+                        <form method="post" action="{{ route('article.delete', ['article' => $article]) }}" >
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger">
+                                <i class="fa-solid fa-bucket">Ciao</i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

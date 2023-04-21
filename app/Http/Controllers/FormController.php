@@ -52,6 +52,12 @@ class FormController extends Controller
             Storage::delete($oldImg);
         }
 
-        return redirect()->route('homepage')->with('message', "Article successfully edited");
+        return redirect()->route('homepage')->with('message', "Article $article->title successfully edited");
+    }
+
+    public function delete(Article $article){
+        Storage::delete($article->img);
+        $article->delete();
+        return redirect()->route('homepage')->with('message', "Article $article->title successfully deleted");
     }
 }

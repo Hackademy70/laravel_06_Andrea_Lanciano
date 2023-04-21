@@ -26,5 +26,8 @@ Route::post('/article-create', [FormController::class, 'formCreate'])->name('art
 
 // rotte e form per UPDATE database
 Route::get('/form/edit/{article}', [FormController::class, 'edit'])->name('article.edit');
-
+//NOTA BENE metodo put va inserito all'interno del form (funzione blade)
 Route::put('/form/update/{article}', [FormController::class, 'update'])->name('article.update');
+
+//eliminare un articolo
+Route::delete('/form/delete/{article}', [FormController::class, 'delete'])->name('article.delete');
