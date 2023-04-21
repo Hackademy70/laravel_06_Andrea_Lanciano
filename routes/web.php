@@ -23,3 +23,8 @@ Route::get('/article/singlecard/{article}', [PublicController::class, 'show'])->
 Route::get('/form', [FormController::class, 'formShow'])->name('show.form');
 
 Route::post('/article-create', [FormController::class, 'formCreate'])->name('article.create');
+
+// rotte e form per UPDATE database
+Route::get('/form/edit/{article}', [FormController::class, 'edit'])->name('article.edit');
+
+Route::put('/form/update/{article}', [FormController::class, 'update'])->name('article.update');

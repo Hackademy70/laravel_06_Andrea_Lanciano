@@ -20,3 +20,9 @@ create database
 php artisan make:migration create_NOMEDATABASE_table
 
 poi modificare migration per avere i nostri campi
+
+
+## CRUD
+Create -> ok
+Read -> ok
+Update
