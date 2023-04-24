@@ -6,14 +6,10 @@
                 href="{{ route('homepage') }}">NONèTimes</a>
             <span class="text-muted">© 2021 Company, Inc</span>
         </div>
-
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-muted" href="#"><i
-                        class="fa-brands fa-square-twitter"></i></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><i
-                        class="fa-brands fa-instagram"></i></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><i
-                        class="fa-brands fa-square-facebook"></i></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
         </ul>
     </footer>
 </div>
