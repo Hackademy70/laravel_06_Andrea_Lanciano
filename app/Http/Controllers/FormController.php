@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Storage;
 
 class FormController extends Controller
@@ -12,20 +13,22 @@ class FormController extends Controller
         return view('form');
     }
 
-    public function formCreate(Request $request) {
-        
-        $img = $request->file('img')->store('public/article');
-        $title = $request->input('title');
-        $article = $request->input('article');
-        $author = $request->input('author');
-        $subtitle = $request->input('subtitle');
+    public function formCreate(ArticleRequest $request) {
 
+        if($request->file('img') == null) {
+            $img = 'default.jpg';
+        } else {
+            $img = $request->file('img')->store('public/article');
+        }
+
+
+        
         $article = Article::create([
-            'title' => $title,
-            'article' => $article,
-            'subtitle' => $subtitle,
+            'title' => $request->input('title'),
+            'article' => $request->input('article'),
+            'subtitle' => $request->input('subtitle'),
             'img' => $img,
-            'author' => $author,
+            'author' => $request->input('author'),
         ]);
 
         return redirect()->route('homepage')->with('message', 'Article inserted successfully');
