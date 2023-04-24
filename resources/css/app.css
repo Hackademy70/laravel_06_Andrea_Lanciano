@@ -1,3 +1,5 @@
+/* Bootstrap */
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
+/* Mio foglio di stile */
 @import '/resources/css/style.css';

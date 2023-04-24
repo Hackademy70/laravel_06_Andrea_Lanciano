@@ -35,4 +35,8 @@
         </div>
     </div>
 
+
+    {{-- Footer --}}
+    <x-footer />
+
 </x-layout>

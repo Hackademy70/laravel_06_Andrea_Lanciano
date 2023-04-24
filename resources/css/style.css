@@ -1,0 +1,8 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+.my-logo-bold{
+    font-weight: 800;
+    font-style: italic;
+}
