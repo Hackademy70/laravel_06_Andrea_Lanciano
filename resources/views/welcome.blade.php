@@ -19,15 +19,17 @@
                         <h5 class="card-title">{!! Str::limit($article->title, 45) !!}</h5>
                         <p class="card-text">{!! Str::limit($article->article, 100) !!}</p>
                         <p class="lead">{{ $article->author }}</p>
-                        <a href="{{ route('singlecard.show', ['article' => $article]) }}" class="btn btn-primary">Read More</a>
-                        <a href="{{ route('article.edit', ['article' => $article]) }}" class="btn btn-warning">Edit</a>
-                        <form method="post" action="{{ route('article.delete', ['article' => $article]) }}" >
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn btn-danger">
-                                <i class="fa-solid fa-bucket">Ciao</i>
-                            </button>
-                        </form>
+                        <div class="d-flex">
+                            <a href="{{ route('singlecard.show', ['article' => $article]) }}" class="btn btn-primary">Read More</a>
+                            <a href="{{ route('article.edit', ['article' => $article]) }}" class="btn btn-warning mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <form method="post" action="{{ route('article.delete', ['article' => $article]) }}" >
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger">
+                                    <i class="fa-solid fa-bucket"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

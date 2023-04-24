@@ -23,8 +23,8 @@ class ArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|min:10|max:255',
-            'article' => 'min:100',
-            'subtitle' => 'required|min:100',
+            'paragraph' => 'min:100',
+            'subtitle' => 'required',
             'author' => 'required',
         ];
     }

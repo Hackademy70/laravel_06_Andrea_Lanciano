@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title')->required();
             $table->string('subtitle')->required();
-            $table->text('article')->required();
+            $table->text('paragraph')->required();
             $table->string('img');
+            $table->string('subtitle2');
+            $table->text('paragraph2');
+            $table->string('img2');
             $table->string('author');
             $table->timestamps();
         });

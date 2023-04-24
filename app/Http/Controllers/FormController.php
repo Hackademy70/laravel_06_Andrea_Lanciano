@@ -21,13 +21,22 @@ class FormController extends Controller
             $img = $request->file('img')->store('public/article');
         }
 
+        if($request->file('img2') == null) {
+            $img2 = 'default.jpg';
+        } else {
+            $img2 = $request->file('img2')->store('public/article');
+        }
+
 
         
         $article = Article::create([
             'title' => $request->input('title'),
-            'article' => $request->input('article'),
+            'paragraph' => $request->input('paragraph'),
             'subtitle' => $request->input('subtitle'),
+            'paragraph2' => $request->input('paragraph2'),
+            'subtitle2' => $request->input('subtitle2'),
             'img' => $img,
+            'img2' => $img2,
             'author' => $request->input('author'),
         ]);
 
@@ -43,16 +52,25 @@ class FormController extends Controller
 
         $oldImg = $article->img;
 
+        $oldImg2 = $article->img2;
+
         $article->update([
             'title' => $request->input('title'),
             'subtitle' => $request->input('subtitle'),
+            'subtitle2' => $request->input('subtitle2'),
             'author' => $request->input('author'),
-            'article' => $request->input('article'),
+            'paragraph' => $request->input('paragraph'),
+            'paragraph2' => $request->input('paragraph2'),
             'img' => ($request->file('img') == null) ? $article->img : $request->file('img')->store('public/article'),
+            'img2' => ($request->file('img2') == null) ? $article->img2 : $request->file('img2')->store('public/article'),
         ]);
 
         if ($request->file('img') !== null){
             Storage::delete($oldImg);
+        }
+
+        if ($request->file('img2') !== null){
+            Storage::delete($oldImg2);
         }
 
         return redirect()->route('homepage')->with('message', "Article $article->title successfully edited");
@@ -60,6 +78,7 @@ class FormController extends Controller
 
     public function delete(Article $article){
         Storage::delete($article->img);
+        Storage::delete($article->img2);
         $article->delete();
         return redirect()->route('homepage')->with('message', "Article $article->title successfully deleted");
     }
