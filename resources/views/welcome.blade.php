@@ -1,7 +1,7 @@
 <x-layout>
 
     @if (session('message'))
-        <div class="container">
+        <div class="container my-2">
             <div class="alert alert-success alert-dismissible fade show">
                 {{ session('message') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
@@ -9,32 +9,40 @@
         </div>
     @endif
 
-    <div class="container mt-3 d-flex justify-content-center">
-        <div class="row justify-content-between">
-            @foreach ($articles as $article)
-            <div class="col-4">
-                {{-- Card (Da trasformare in componente) --}}
-                <div class="card mb-3" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{!! Str::limit($article->title, 45) !!}</h5>
-                        <p class="card-text">{!! Str::limit($article->article, 100) !!}</p>
-                        <p class="lead">{{ $article->author }}</p>
-                        <div class="d-flex">
-                            <a href="{{ route('singlecard.show', ['article' => $article]) }}" class="btn btn-primary">Read More</a>
-                            <a href="{{ route('article.edit', ['article' => $article]) }}" class="btn btn-warning mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <form method="post" action="{{ route('article.delete', ['article' => $article]) }}" >
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn btn-danger">
-                                    <i class="fa-solid fa-bucket"></i>
-                                </button>
-                            </form>
-                        </div>
+
+    {{-- prova layout --}}
+
+    <div class="band mt-3">
+    @if ($firstArticle != null)
+        <div class="item-1">
+            <div class="my-card">
+                <div class="thumb" style="background-image: url({{ Storage::url($firstArticle->img) }});"></div>
+                <article class="my-article">
+                    <h2>{!! Str::limit($firstArticle->title, 45) !!}</h2>
+                    <p class="my-card-paragraph">{!! Str::limit($firstArticle->paragraph, 200) !!}</p>
+                    <span class="author">{{ $firstArticle->author }}</span>
+                    <div class="d-flex mt-3">
+                        <a href="{{ route('singlecard.show', ['article' => $firstArticle]) }}" class="btn btn-primary">Read More</a>
+                        <a href="{{ route('article.edit', ['article' => $firstArticle]) }}" class="btn btn-warning mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <form method="post" action="{{ route('article.delete', ['article' => $firstArticle]) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger">
+                                <i class="fa-solid fa-bucket"></i>
+                            </button>
+                        </form>
                     </div>
-                </div>
+                </article>
             </div>
-            @endforeach
         </div>
+    @endif
+        @foreach ($articles as $article)
+        @if ($firstArticle->id != $article->id)
+        <x-card
+            :article="$article"
+        /> 
+        @endif
+        @endforeach
     </div>
 
 

@@ -82,4 +82,10 @@ class FormController extends Controller
         $article->delete();
         return redirect()->route('homepage')->with('message', "Article $article->title successfully deleted");
     }
+    public function firstDelete(Article $firstArticle){
+        Storage::delete($firstArticle->img);
+        Storage::delete($firstArticle->img2);
+        $firstArticle->delete();
+        return redirect()->route('homepage')->with('message', "Article $firstArticle->title successfully deleted");
+    }
 }

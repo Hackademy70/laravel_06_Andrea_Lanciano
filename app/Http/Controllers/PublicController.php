@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 class PublicController extends Controller
 {
     public function homepage() {
-        $articles = Article::all();
-        return view('welcome', ['articles' => $articles]);
+        $firstArticle = Article::all()->sortBy('id')->last();
+        $articles = Article::all()->sortBy('id');
+        return view('welcome', ['articles' => $articles, 'firstArticle' => $firstArticle]);
     }
 
     public function show(Article $article) {
