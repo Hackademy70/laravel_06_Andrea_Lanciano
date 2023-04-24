@@ -2,13 +2,13 @@
     font-weight: 800;
     font-style: italic;
 }
-
+body{
+    background-color: #f3f3f3;
+}
 html {
-    background: #f5f7f8;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
-    padding: 20px 0;
 }
 
 header {
