@@ -45,7 +45,7 @@
                     {{-- Second Paragraph --}}
                     <label for="paragraph2">Write second paragraph</label>
                     <div class="form-floating">
-                        <textarea class="form-control @error('paragraph2') is-invalid @enderror" name="paragraph2" style="height: 100px">@error('paragraph2'){{ $message }}@enderror {{ old('paragraph') }}</textarea>
+                        <textarea class="form-control @error('paragraph2') is-invalid @enderror" name="paragraph2" style="height: 100px">@error('paragraph2'){{ $message }}@enderror {{ old('paragraph2') }}</textarea>
                     </div>
                     <div class="mb-3 col-4 mt-2">
                         <label for="img2" class="form-label">Cover second paragraph</label>

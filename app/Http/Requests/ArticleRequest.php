@@ -25,6 +25,8 @@ class ArticleRequest extends FormRequest
             'title' => 'required|min:10|max:255',
             'paragraph' => 'min:100',
             'subtitle' => 'required',
+            'paragraph2' => 'min:100',
+            'subtitle2' => 'required',
             'author' => 'required',
         ];
     }
