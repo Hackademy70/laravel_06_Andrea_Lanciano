@@ -5,15 +5,15 @@
         <p class="my-card-paragraph">{!! Str::limit($article->paragraph, 200) !!}</p>
         <span class="author">{{ $article->author }}</span>
         <div class="d-flex mt-3">
+            {{-- Show single article page button --}}
             <a href="{{ route('singlecard.show', ['article' => $article]) }}" class="btn btn-primary">Read More</a>
+            {{-- Edit Button --}}
             <a href="{{ route('article.edit', ['article' => $article]) }}" class="btn btn-warning mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
-            <form method="post" action="{{ route('article.delete', ['article' => $article]) }}">
-                @method('DELETE')
-                @csrf
-                <button class="btn btn-danger">
-                    <i class="fa-solid fa-bucket"></i>
-                </button>
-            </form>
+            <!-- Button trigger modal Delete -->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">
+                <i class="fa-solid fa-bucket"></i>
+            </button>
         </div>
     </article>
 </div>

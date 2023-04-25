@@ -22,15 +22,15 @@
                         <p class="my-card-paragraph">{!! Str::limit($firstArticle->paragraph, 200) !!}</p>
                         <span class="author">{{ $firstArticle->author }}</span>
                         <div class="d-flex mt-3">
+                            {{-- read more button --}}
                             <a href="{{ route('singlecard.show', ['article' => $firstArticle]) }}" class="btn btn-primary">Read More</a>
+                            {{-- edit button --}}
                             <a href="{{ route('article.edit', ['article' => $firstArticle]) }}" class="btn btn-warning mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <form method="post" action="{{ route('article.delete', ['article' => $firstArticle]) }}">
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn btn-danger">
-                                    <i class="fa-solid fa-bucket"></i>
-                                </button>
-                            </form>
+                            <!-- Button trigger modal Delete -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                <i class="fa-solid fa-bucket"></i>
+                            </button>
                         </div>
                     </article>
                 </div>
@@ -38,15 +38,40 @@
         @endif
         @foreach ($articles as $article)
             @if ($firstArticle->id != $article->id)
-                <x-card
-                    :article="$article"
-                /> 
+                <x-card :article="$article" />
             @endif
         @endforeach
     </div>
 
-
     {{-- Footer --}}
     <x-footer />
+
+
+    <!-- Modal Delete -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete your article? This change will be defenitive
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    {{-- DELETE FORM --}}
+                    <form method="post" action="{{ route('article.delete', ['article' => $firstArticle]) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-danger">
+                            <i class="fa-solid fa-bucket"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </x-layout>
