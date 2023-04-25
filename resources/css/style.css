@@ -2,6 +2,13 @@
     font-weight: 800;
     font-style: italic;
 }
+.edit-img{
+    height: 38px;
+    transition: transform .5s;
+}
+.edit-img:hover{
+    transform: scale(3);
+}
 body{
     background-color: #f3f3f3;
     font-family: 'Montserrat', sans-serif;

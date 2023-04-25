@@ -24,7 +24,7 @@
                       <label for="img" class="form-label mt-2">Cover</label>
                       <div class="mb-3 col-4 d-flex w-100">
                         <input type="file" class="form-control" name="img">
-                        <img src="{{ Storage::url($article->img) }}" alt=" {{ $article->subtitle }} " style="width: 80px;">
+                        <img src="{{ Storage::url($article->img) }}" alt=" {{ $article->subtitle }} " class="edit-img">
                     </div>
                     {{-- secondo paragrafo --}}
                     <div class="mb-3">
@@ -38,13 +38,13 @@
                       <label for="img" class="form-label mt-2">Cover</label>
                       <div class="mb-3 col-4 d-flex w-100">
                         <input type="file" class="form-control" name="img">
-                        <img src="{{ Storage::url($article->img2) }}" alt=" {{ $article->subtitle2 }} " style="width: 80px;">
+                        <img src="{{ Storage::url($article->img2) }}" alt=" {{ $article->subtitle2 }} " class="edit-img">
                     </div>
                     <div class="mb-3 mt-1">
                         <label for="author" class="form-label">Author</label>
                         <input type="text" class="form-control" name="author" value="{{ $article->author }}">
                     </div>
-                    <button type="submit" class="btn btn-warning">Modify article</button>
+                    <button type="submit" class="btn btn-warning">Save changes</button>
                 </form>
             </div>
         </div>

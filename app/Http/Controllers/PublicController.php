@@ -9,7 +9,7 @@ class PublicController extends Controller
 {
     public function homepage() {
         $firstArticle = Article::all()->sortBy('id')->last();
-        $articles = Article::all()->sortBy('id');
+        $articles = Article::all()->sortBy('id')->sortDesc();
         return view('welcome', ['articles' => $articles, 'firstArticle' => $firstArticle]);
     }
 

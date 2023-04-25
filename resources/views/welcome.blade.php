@@ -66,6 +66,7 @@
                         @csrf
                         <button class="btn btn-danger">
                             <i class="fa-solid fa-bucket"></i>
+                            Delete
                         </button>
                     </form>
                 </div>

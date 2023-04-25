@@ -47,6 +47,14 @@
     </nav>
 
 
+
+    {{-- Titolo per le pagine --}}
+    <div class="container d-flex align-items-end">
+        <h1 class="my-logo-bold">NONèTimes</h1>
+        <p class="ms-3 load">Free information from and for everyone</p>
+    </div>
+
+
     {{ $slot }}
     
 </body>
