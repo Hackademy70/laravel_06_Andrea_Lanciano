@@ -61,6 +61,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     {{-- DELETE FORM --}}
+                    @if ($firstArticle != null)
                     <form method="post" action="{{ route('article.delete', ['article' => $firstArticle]) }}">
                         @method('DELETE')
                         @csrf
@@ -69,6 +70,7 @@
                             Delete
                         </button>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>

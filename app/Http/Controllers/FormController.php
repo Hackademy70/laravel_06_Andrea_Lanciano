@@ -16,13 +16,13 @@ class FormController extends Controller
     public function formCreate(ArticleRequest $request) {
 
         if($request->file('img') == null) {
-            $img = 'default.jpg';
+            $img = 'default.jpeg';
         } else {
             $img = $request->file('img')->store('public/article');
         }
 
         if($request->file('img2') == null) {
-            $img2 = 'default.jpg';
+            $img2 = 'default.jpeg';
         } else {
             $img2 = $request->file('img2')->store('public/article');
         }
@@ -80,12 +80,12 @@ class FormController extends Controller
         Storage::delete($article->img);
         Storage::delete($article->img2);
         $article->delete();
-        return redirect()->route('homepage')->with('message', "Article $article->title successfully deleted");
+        return redirect()->route('homepage');
     }
     public function firstDelete(Article $firstArticle){
         Storage::delete($firstArticle->img);
         Storage::delete($firstArticle->img2);
         $firstArticle->delete();
-        return redirect()->route('homepage')->with('message', "Article $firstArticle->title successfully deleted");
+        return redirect()->route('homepage');
     }
 }
